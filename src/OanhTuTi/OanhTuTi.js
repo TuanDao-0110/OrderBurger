@@ -23,7 +23,8 @@ class OanhTuTi extends Component {
               e.target.classList.add("active");
             }}
           >
-            <img src={itemLuaChon.source} className="luaChon"></img>
+            {itemLuaChon.pick}
+            {/* <img src={itemLuaChon.source} className="luaChon"></img> */}
           </div>
         );
       });
@@ -51,6 +52,7 @@ class OanhTuTi extends Component {
               <h1 className="content ">
                 số bàn chơi: <span>{item.banChoi}</span>
               </h1>
+              <h1>{item.countDown}</h1>
               <button
                 className="play"
                 onClick={() => {
@@ -62,7 +64,7 @@ class OanhTuTi extends Component {
             </div>
             <div className="col-3 col-left">
               <div className="picture-left">
-                <div key={Math.random() * 1} className="speech-bubble animate__animated animate__bounceIn">
+                <div key={Math.random() * 1} className="speech-bubble animate__animated animate__shakeY">
                   <img className="" src={item.luaChon[item.pcPick].source} style={{ width: "50px", height: "100px" }}></img>
                 </div>
                 <img src="./img/oanhTuTi/playerComputer.png" className="actor"></img>
@@ -89,11 +91,21 @@ const mapDispatchToProps = (dispatch) => {
       });
     },
     clickToPlay: () => {
-      let ranDomPcPick = Math.floor(Math.random() * 3);
-      dispatch({
-        type: "PC_Lua_Chon",
-        ranDomPcPick,
-      });
+      let count = 0;
+
+      let randomPick = setInterval(() => {
+        let ranDomPcPick = Math.floor(Math.random() * 3);
+        count++;
+        dispatch({
+          type: "PC_Lua_Chon",
+          ranDomPcPick,
+          count,
+       
+        });
+        if (count > 40) {
+          clearInterval(randomPick);
+        }
+      }, 100);
     },
   };
 };

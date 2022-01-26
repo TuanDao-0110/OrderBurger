@@ -1,10 +1,15 @@
-import logo from "./logo.svg";
 import "./App.css";
-import OanhTuTi from "./OanhTuTi/OanhTuTi";
+import BaiTapBurger from "./BaiTapBurger/BaiTapBurger";
+// import OanhTuTi from "./OanhTuTi/OanhTuTi";
+import ContextDemo from "./ContextDemo/ContextDemo";
+import ExContextModalList from "./ExContextModelList/ExContextModalList";
 function App() {
   return (
-    <div className="App">
-      <OanhTuTi></OanhTuTi>
+    <div className="">
+      {/* <BaiTapBookingTicket /> */}
+      {/* <ContextDemo></ContextDemo> */}
+      {/* <ExContextModalList></ExContextModalList> */}
+      <BaiTapBurger></BaiTapBurger>
     </div>
   );
 }
